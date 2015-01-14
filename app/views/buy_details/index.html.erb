@@ -1,0 +1,33 @@
+<h1>Listing buy_details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Buy</th>
+      <th>State</th>
+      <th>Imei</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buy_details.each do |buy_detail| %>
+      <tr>
+        <td><%= buy_detail.model_id %></td>
+        <td><%= buy_detail.buy_id %></td>
+        <td><%= buy_detail.state_id %></td>
+        <td><%= buy_detail.imei %></td>
+        <td><%= buy_detail.price %></td>
+        <td><%= link_to 'Show', buy_detail %></td>
+        <td><%= link_to 'Edit', edit_buy_detail_path(buy_detail) %></td>
+        <td><%= link_to 'Destroy', buy_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Buy detail', new_buy_detail_path %>

@@ -1,0 +1,29 @@
+.row
+  .col-md-4
+  .col-md-4
+    %br
+    .show-group-index
+      %table.table.table-striped
+        %tbody
+          %tr
+            %td
+              Fecha de vencimiento:
+            %td
+              = @coupon.end_date.strftime('%d/%m/%Y')
+          %tr
+            %td
+              Cliente:
+            %td
+              = @coupon.buy.customer.rut
+              %br
+              = @coupon.buy.customer.full_name
+          %tr
+            %td
+              Valor Cupón:
+            %td
+              = number_to_currency(@coupon.price, precision: 0, separator: ",", delimiter: ".") 
+      .barcode        
+      = raw @barcode_for_html.to_html
+
+
+     

@@ -1,0 +1,84 @@
+body.login-home{
+  background-color: #2d9b36;
+
+  .navigation-navbar{
+    background-color: #298e33;
+
+
+    .navbar-header{
+      width: 100%;
+    }
+
+    .logo{
+      display: inline-block;
+      margin-top: 5px;
+    }
+  }
+
+  .signin-title{
+    font-size: 4.2em;
+    font-weight: 100;
+    color: #FFF;  
+    margin-top: 40px;
+  }
+
+  .signin-sub-title{
+    color: #FFF;
+    font-weight: 400;
+    font-size: 1.8em;
+  }
+
+  .login-form,
+  .recover-password{
+    background: #FFF;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 2.4em;
+    max-width: 300px;
+    padding: 1.5em;
+
+    h3{
+      margin: 0;
+      margin-bottom: .5em;
+    }
+
+    .form-control{
+      width: 250px;
+      // width: 100%;
+    }
+  }
+
+  .recover-password{
+    max-width: 500px;
+
+    .alert{
+      text-align: left;
+    }
+
+    .form-control{
+      display: inline-block;
+      width: 300px;
+    }
+  }
+
+  footer{
+    background: transparent;
+    
+    color: #fff ;
+    ul{
+      text-align: center;
+      padding: 2em 0;
+
+      li{
+        list-style: none;
+        display: inline-block;
+        
+        a{
+          color: #FFF;
+          display: inline-block;
+          margin: 0 3em;
+        }
+      }
+    }
+  }
+}

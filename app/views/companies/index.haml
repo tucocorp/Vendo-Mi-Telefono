@@ -1,0 +1,33 @@
+%h1.text-center Lista de Compañias
+%hr
+%br
+.row
+  .col-md-3
+  .col-md-5
+    - unless @companies.empty?
+      .option-button
+        = link_to ' Agregar Compañia', new_company_path, class: 'btn btn-success'
+      %br
+      .company-index
+      %table.table.table-striped
+        %thead
+        %tbody
+          - @companies.each do |companies|
+            %tr
+              %td
+                %strong
+                  = companies.name
+              %td
+                = link_to " Ver Sucursales ", companies, class: 'btn btn-default fa fa-eye'
+              %td
+                = link_to " Editar", edit_company_path(companies), class: 'btn btn-default fa fa-edit'
+              %td
+                = link_to " Eliminar", companies, method: :delete, data: { confirm: "¿Estás Seguro que deseas eliminar la compañia #{companies.name}?"}, class: 'btn btn-danger fa fa-trash'
+    - else
+      .empty-companies.text-center
+      %h4
+        %center
+          No existen modelos para la marca 
+          %br
+          %br
+          = link_to ' Agregar Compañia', new_company_path, class: 'btn btn-lg btn-success'

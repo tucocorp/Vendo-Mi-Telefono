@@ -1,0 +1,45 @@
+%h1
+  .title.text-center
+    Teléfonos
+    = @trademark.name
+%hr
+%br
+.row
+  .col-sm-12
+    .col-sm-2
+    - if !@models.empty?
+      .index-models.col-sm-7{ style: 'margin-left:50px;' }
+        .option-button
+          = link_to ' Agregar modelo', new_model_path(trademark_id: @models.first.trademark_id), class: 'btn btn-success'
+          = link_to ' Ver Marcas', trademarks_path, class: 'btn btn-default'
+        %br
+        .models-index
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Nombre
+              %th Precio Máximo
+              %th
+          %tbody
+            - @models.each do |model|
+              %tr
+                %td
+                  %strong
+                    = model.name
+                %td
+                  = number_to_currency(model.price)
+                %td
+                  = link_to " Editar", edit_model_path(model), class: 'btn btn-default fa fa-edit'
+                  = link_to " Eliminar", model, method: :delete, data: { confirm: "¿Estás Seguro que deseas eliminar el modelo #{model.name}?"}, class: 'btn btn-danger fa fa-trash'
+    - else
+      .empty-models.text-center
+        %h4
+          No existen modelos para la marca 
+          = "#{@trademark.name}"
+        = link_to ' Agregar modelo', new_model_path(trademark_id: @trademark.id), class: 'btn btn-success ' 
+        = link_to ' Ver Marcas', trademarks_path, class: 'btn btn-default'
+
+
+      
+
+

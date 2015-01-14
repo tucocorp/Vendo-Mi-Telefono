@@ -1,0 +1,40 @@
+%h1.text-center Listado de clientes
+%hr
+%br
+.col-md-10.col-md-offset-1
+  = form_tag customers_path, method: :get do
+    .form-group
+      /= f.search_field :name_or_last_name_or_rut_or_email_or_address_or_phone_cont, placeholder: 'Busque cliente'
+      = text_field_tag :q, params[:q], placeholder: 'Buscar cliente'
+      = submit_tag "Buscar"
+      
+.col-md-10.col-md-offset-1
+  %br
+  .customer-index
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Rut
+          %th Nombre
+          %th Apellidos
+          %th Email
+          %th Direccion
+          %th Telefono
+      %tbody
+        - @customers.each do |customer|
+          %tr
+            %td
+              = customer.rut
+            %td
+              = customer.name.capitalize
+            %td
+              = customer.last_name.capitalize
+            %td
+              = customer.email.capitalize
+            %td
+              = customer.address.capitalize
+            %td
+              = customer.phone.capitalize
+
+    = paginate @customers
+

@@ -1,0 +1,36 @@
+= form_for @model, html: { class: 'form-horizontal', role: 'form'} do |f| 
+  = if @model.errors.any?
+    #iderror_explanation
+      %h2
+        = pluralize(@model.errors.count, "error")
+        prohibited this model from being saved:
+
+      %ul
+      = @model.errors.full_messages.each do |message|
+        %li
+          = message
+  .form-group
+    .col-sm-10
+      = text_field_tag :trademark, @model.trademark.name,class: 'form-control', disabled: :true
+  .form-group
+    .col-sm-10
+      = f.text_field :name, class: 'form-control' ,placeholder: 'Ingrese nombre de modelo'
+      = f.text_field :trademark_id, class: 'hidden'
+  .error-name.hidden.text-danger{style: 'margin-top:-15px;margin-bottom:15px;'}
+    Debe ingresar un nombre del modelo teléfonico
+  
+
+  .form-group
+    .col-sm-10
+      = f.text_field :price, class: 'form-control' ,placeholder: 'Ingrese precio máximo a pagar'
+  .error-price.hidden.text-danger{style: 'margin-top:-15px;margin-bottom:15px;'}
+    Debe Ingrese precio máximo a pagar
+  .error-price-isNaN.hidden.text-danger{style: 'margin-top:-15px;margin-bottom:15px;'}
+    Debe ingresar numero, Ej: "15000"
+
+  .form-group
+    .option-button-models
+      = f.submit "#{@option} modelo", class: 'btn btn-success', id: 'buton-model'
+      = link_to ' Cancelar', trademark_path(@model.trademark_id), class: 'btn btn-default'
+
+

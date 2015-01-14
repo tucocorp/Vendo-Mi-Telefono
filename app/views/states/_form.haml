@@ -1,0 +1,16 @@
+= form_for @state, html: { class: 'form-horizontal', role: 'form'} do |f|
+  .form-group
+    .col-sm-10
+      = f.text_field :name, class: 'form-control',placeholder: 'Ingrese un nombre de estado, Ej: Operativo '
+  .error-name.hidden.text-danger{style: 'margin-top:-15px;margin-bottom:15px;'}
+    Debe ingresar un nombre de estado, Ej: Operativo
+  .form-group
+    .col-sm-10
+      = f.text_field :factor, class: 'form-control',placeholder: 'Ingrese un factor, Ej: 40'
+  .error-factor-empty.hidden.text-danger{style: 'margin-top:-15px;margin-bottom:15px;'}
+    Debe ingresar el factor que paga por el estado, Ej: 40
+  .error-factor-isNaN.hidden.text-danger{style: 'margin-top:-15px;margin-bottom:15px;'}
+    El factor debe ser un numero, Ej: 40
+  .actions
+    = f.submit "#{@option} Estado", class: 'btn btn-success', id: "buton-states" 
+    = link_to ' Cancelar', states_path, class: 'btn btn-default'

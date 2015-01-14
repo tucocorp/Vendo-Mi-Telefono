@@ -1,0 +1,47 @@
+.row
+  .col-sm-12
+    .col-sm-3
+    .form-body-customer.col-sm-4
+      = form_for @customer, url: create_customer_buy_path(@buy), html: { class: 'form-inline', role: 'form'}  do |f|
+
+        .form-group.rut{style: 'margin-bottom:20px; margin-left:12px;'}
+          = f.text_field :rut, class: 'form-control col-sm-6',placeholder: 'Ingrese rut, Ej: 16468949-2', style: 'width:350px'
+          .rut-invalid.hidden.text-danger
+            El rut es incorrecto.
+          .format-rut-invalid.hidden.text-danger
+            El formato del rut es incorrecto,  Ej: 16468949-2.
+        .form-group.name{style: 'margin-bottom:20px;margin-left:13px;'}
+          = f.text_field :name, class: 'form-control', placeholder: 'Ingrese nombre, Ej: Pedro', style: 'width:350px'
+          .name-empty.hidden.text-danger
+            Ingrese Nombre, Ej: Pedro.
+        .form-group.last_name{style: 'margin-bottom:20px;margin-left:13px;'}
+          = f.text_field :last_name, class: 'form-control', placeholder: 'Ingrese Apellidos, Ej: Carrizo Montoya.', style: 'width:350px'
+          .last_name-empty.hidden.text-danger
+            Ingrese Apellidos, Ej: Carrizo Montoya.
+
+        .form-group.email{style: 'margin-bottom:20px;margin-left:13px;'}
+          = f.text_field :email, class: 'form-control', placeholder: 'Ingrese correo electrónico, Ej: ejemplo@email.com', style: 'width:350px'
+          .email-format.hidden.text-danger
+            El formato de email es incorrecto, Ej: ejemplo@email.com.
+
+        .form-group.address{style: 'margin-bottom:20px;margin-left:13px;'}
+          = f.text_field :address, class: 'form-control', placeholder: 'Ingrese dirección, Ej: Carmen Sylva #3212', style: 'width:350px'
+          .address-empty.hidden.text-danger
+            Ingrese Dirección, Ej: Carmen Sylva #3212.
+
+        .form-group.phone{style: 'margin-bottom:20px;margin-left:13px;'}
+          = f.text_field :phone, class: 'form-control', placeholder: 'Ingrese teléfono de contacto, Ej: 65432762', style: 'width:350px'
+          .phone-empty.hidden.text-danger
+            Ingrese Teléfono de contacto, Ej: 65432762.
+          .phone-length.hidden.text-danger
+            Debe tener 8 caracteres, Ej: 65432762.
+          .phone-numero.hidden.text-danger
+            El teléfono de contacto deben ser numeros.
+
+        .form-group{style: 'margin-bottom:30px;'}
+          .option-button.text-center{style: 'margin-left:26px;margin-top:20px;'}
+            = f.submit "Ingresar Cliente", class: 'btn btn-lg btn-success', id: "buton-cliente"
+            = hidden_field_tag :id, @buy.id
+            = link_to 'Cancelar Compra', @buy , method: :delete, data: { confirm: "¿Estás Seguro que deseas esta compra?"}, class: 'btn btn-lg btn-default' 
+  
+

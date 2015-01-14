@@ -1,0 +1,59 @@
+.navigation-navbar{
+  background-color: #298e33;
+  border-radius: 0;
+  border-color: #1D4974;
+  border: 0;
+  margin-bottom: 0;
+
+  .logo,
+  .navbar-brand{
+    font-family: 'Lobster';
+    color: #FFF;
+    font-size: 1.8em;
+    text-decoration: none;
+    padding: .1em .5em;
+  }
+
+  .main-menu{
+    // left: 50%;
+    // margin-left: -360px;
+    // position: relative;
+
+    li a{
+      color: #FFF;
+      text-transform: uppercase;
+    }
+
+    li:hover > a{
+      background-color: #247f2c;
+    }
+
+    li.active > a{
+      background-color: #30a539;
+    }
+  }
+
+  .user-menu{
+    li{
+      a{
+        color: #fff;
+      }
+
+      &:hover > a{
+        background-color: #5D9CEC;
+      }
+    }
+
+    .dropdown.open > .dropdown-toggle{
+      background-color: #5D9CEC;
+    }
+
+    .dropdown-menu li a{
+      color: #333;
+    }
+
+    .dropdown-menu li a:hover{
+      color: #FFF;
+    }
+  }
+}

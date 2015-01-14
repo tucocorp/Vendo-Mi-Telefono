@@ -1,0 +1,21 @@
+%h1.text-center 
+  Agregar Miembro a 
+  = @sucursal.name
+
+%hr
+%br
+
+  / .pull-right
+  /   = link_to 'Cancelar', users_path, class: 'btn btn-default'
+  /   = link_to 'Guardar', nil, class: 'btn btn-success', 'data-submit' => 'user_form'
+
+.separator
+
+.row
+  .col-sm-12
+    .col-sm-3
+    .form-body.col-sm-8{ style: 'margin-left:100px;' }
+      = render 'form'
+  .col-sm-12
+    .col-sm-4.col-md-offset-4
+      %hr

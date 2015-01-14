@@ -1,0 +1,30 @@
+= form_for @buy do |f|
+  = f.fields_for :buy_details do |detail|
+    .select_phone.col-md-4.col-md-offset-1
+      .form-group
+        %h4
+          1.- Selecciona marca y modelo teléfonico.
+      .form-group
+        = select_tag :trademark_id, options_for_select(@trademarks.collect { |trademark| [trademark.name.titleize, trademark.id] }), {  prompt: 'Seleccione una marca', class: 'trademark_select form-control' } 
+      
+      .form-group
+        = detail.select :model_id, options_for_select(@models.collect { |models| [models.name.titleize, models.id] }, 0), { prompt: 'Seleccione un modelo' }, { class: 'model_select form-control' }
+  
+    .select_state.col-md-4.col-md-offset-1
+      .form-group
+        %h4
+          2.- Selecciona el estado del teléfono.
+      .form-group
+        = detail.select :state_id, options_for_select(@states.collect { |state| [state.name, state.id] }, 0),{prompt: 'Seleccione el estado del teléfono' }, { class: 'state_select form-control' } 
+    
+  
+  .phone-value.col-md-9.col-md-offset-1
+    .form-group
+      .phone-total-price
+        %h3
+          El telefono ha sido cotizado en :
+        %h1
+          .value
+
+  .options.col-md-4.col-md-offset-4.text-center
+    = f.submit "Continuar Compra", class: 'btn btn-lg btn-success buy-bottom'

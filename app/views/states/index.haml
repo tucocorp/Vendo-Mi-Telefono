@@ -1,0 +1,25 @@
+%h1.text-center Lista de Estados Telefonicos
+%hr
+%br
+.row
+  .col-md-4
+  .col-md-4
+    .option-button
+      = link_to 'Nuevo Estado', new_state_path, class: 'btn btn-success'
+    %br
+    .states-index 
+      %table.table.table-striped
+        %thead
+        %tbody
+          - @states.each do |state|
+            %tr
+              %td
+                = state.name
+              %td
+                = state.factor
+              %td
+                = link_to 'Editar', edit_state_path(state), class: 'btn btn-default fa fa-edit'
+              %td
+                = link_to ' Eliminar', state, method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar el estado #{state.name}?"}, class: 'btn btn-danger fa fa-trash'
+
+      

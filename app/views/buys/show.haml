@@ -1,0 +1,111 @@
+%h1.heading.text-center Detalles de compra
+%hr
+%br
+.row
+  .col-md-2
+  .buy-heading-client.col-md-4
+    .heading-title
+      %h4
+        Datos Sucursal
+      %hr
+    .title-client.pull-left
+      Sucursal  :
+      %br
+      Dirección:
+      %br
+      Fecha compra :
+    .value-client.pull-right
+      = @buy.member.sucursal.name unless @buy.member.nil?
+      %br
+      = @buy.member.sucursal.address unless @buy.member.nil?
+      %br
+      = @buy.created_at.strftime("%d/%m/%Y")
+  .buy-heading-custumer.col-md-4.col-md-offset-1
+    .heading-customer
+      %h4
+        Datos Cliente
+      %hr
+    .title-customer.pull-left
+      Rut :
+      %br
+      Nombre :
+      %br
+      Dirección :
+      %br
+      Teléfono de contacto :
+      %br
+    .value-customer.pull-right
+      - unless @buy.customer.nil?
+        = @buy.customer.rut 
+        %br
+        = @buy.customer.full_name
+        %br
+        = @buy.customer.address    
+        %br
+        = @buy.customer.phone   
+
+.row
+  .col-md-2
+  .total-value.col-md-9
+    .title-total-value.text-center
+      %h3
+        Valor a pagar
+    .value-total.text-center
+      %h1
+        = number_to_currency(@buy.get_total_price)
+
+.row{ style: 'margin-top:10px;'}
+  .col-md-3
+  .option-button.col-md-8
+    - if @buy.coupon.nil?    
+      = link_to 'Agregar otro teléfono', add_phone_buy_path, class: 'btn btn-lg btn-success'
+      = link_to 'Generar cupón de descuento y finalizar compra', {controller: "coupons", :buy_id => @buy}, method: :create, class: 'btn btn-lg btn-primary'
+      = link_to 'Cancelar Compra', @buy , method: :delete, data: { confirm: "¿Estás Seguro que deseas esta compra?"}, class: 'btn btn-lg btn-default' 
+    - else
+      = link_to '#show-coupon', class: 'btn btn-lg btn-primary', data: { toggle: 'modal', target: '#show-coupon' } do
+        %span Ver e imprimir cupón
+      = link_to 'Terminar Compra', root_path,class: 'btn btn-lg btn-success'
+      
+
+.row
+  .col-md-3
+  .buy-details-table.col-md-6
+    %table.table.table-striped
+      %thead
+        %tr
+          %th
+            Marca
+          %th
+            Modelo
+          %th
+            Estado Teléfono
+          %th
+            Precio a pagar
+          %th
+          %th
+
+      %tbody
+        - @buy.buy_details.each do |detail|
+          %tr
+            %td
+              %strong
+                = detail.model.trademark.name
+            %td
+              %strong
+                = detail.model.name
+            %td
+              %strong
+                = detail.state.name
+            %td
+              %strong
+
+                = number_to_currency(detail.price)  
+            %td
+              - if @buy.coupon.nil?
+                = link_to " Quitar Telefono", detail , method: :delete, data: { confirm: "¿Estás Seguro que deseas eliminar  el teléfono #{ detail.model.trademark.name} #{detail.model.name} de esta compra?"}, class: 'btn btn-danger fa fa-close'
+
+
+
+= render 'buy_modals'
+
+

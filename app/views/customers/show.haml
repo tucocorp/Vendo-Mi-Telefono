@@ -1,0 +1,40 @@
+%h1
+  .title.text-center
+    = @customer.name
+%hr
+%br
+.row
+  .col-sm-12
+    .col-sm-2
+      %br
+        .index-models.col-sm-7{ style: 'margin-left:350px;' }
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Nombre
+                %th Apellidos
+                %th Rut
+                %th Email
+                %th Direccion
+                %th Telefono
+            %tbody
+              %tr
+                %td 
+                  = @customer.name
+             
+                %td
+                  = @customer.last_name
+              
+                %td
+                  = @customer.rut
+              
+                %td
+                  = @customer.email
+           
+                %td
+                  = @customer.address
+              
+                %td
+                  = @customer.phone
+            = link_to 'Editar Usuario', edit_customer_path(@customer), class: 'btn btn-success' 
+            = link_to 'Cancelar', customers_path, class: 'btn btn-default fa fa-close'

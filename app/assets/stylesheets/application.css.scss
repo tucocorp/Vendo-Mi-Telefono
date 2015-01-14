@@ -1,0 +1,31 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "home";
+@import "common";
+@import "buys";
+
+
+.welcome-main{
+  a{
+    font-size: 2em;
+    padding: 4em 0;
+    background-color: #2d9b36;
+    display: block;
+    text-align: center;
+    color:#fff;
+    &:hover{
+      background-color: #357c35;
+    }
+  }
+
+}
+
+.ascii{width: 500px}
+
+table.barby-barcode { border-spacing: 1; }
+tr.barby-row {}
+td.barby-cell { width: 3px; height: 100px; }
+td.barby-cell.on { background: #000; }

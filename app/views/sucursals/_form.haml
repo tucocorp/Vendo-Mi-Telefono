@@ -1,0 +1,46 @@
+= form_for @sucursal, html: { class: 'form-horizontal', role: 'form'} do |f| 
+  .form-group
+    = text_field_tag :company, @sucursal.company.name,class: 'form-control', disabled: :true
+  
+  .form-group
+    .name
+      = f.text_field :name, class: 'form-control' ,placeholder: 'Ingrese un nombre '
+    .error-name.hidden.text-danger
+      Debe Ingresar Nombre de la sucursal.
+  
+  .form-group
+    .address
+      = f.text_field :address, class: 'form-control' ,placeholder: 'Ingrese una dirección'
+    .error-address.hidden.text-danger
+      Debe Ingresar Dirección de la sucursal.
+  
+  .form-group
+    .email
+      = f.text_field :email, class: 'form-control' , placeholder: 'Ingrese un email'
+    .error-email.hidden.text-danger
+      Debe Ingresar email de la sucursal.
+      
+  .form-group
+    .phone
+      = f.text_field :contact_number, class: 'form-control' ,placeholder: 'Ingrese un numero de contacto'
+      .error-phone-empty.hidden.text-danger
+        Debe Ingrese Teléfono de contacto.
+      .error-phone-isNaN.hidden.text-danger
+        Debe Ingresar Numero Ejemplo: 23456789
+      .error-phone-length.hidden.text-danger
+        Debe tener un minimo de 8 caracteres el Teléfono.
+  
+  .form-group
+    .responsable
+      = f.text_field :responsible_name, class: 'form-control' , placeholder: 'Ingrese el nombre de la persona responsable'
+      = hidden_field_tag :company_id, @sucursal.company_id, class: 'hidden-company-id'
+    .error-responsable.hidden.text-danger
+      Debe ingresar el nombre de la persona responsable.
+
+
+  .form-group
+    .col-sm-7.option-button-sucursal
+      = f.submit "#{@option} Sucursal", class: 'btn btn-success', id: "buton-sucursal"
+      = link_to ' Cancelar', company_path(@sucursal.company_id), class: 'btn btn-default'
+
+

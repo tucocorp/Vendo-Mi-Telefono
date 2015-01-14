@@ -1,0 +1,35 @@
+- unless @buys.empty? 
+  %h1.text-center Compras realizadas
+  %hr
+  %br
+  .col-md-10.col-md-offset-1
+    %table.table.table-striped
+      %thead
+        %tr
+          %th
+            Sucursal
+          %th
+            Cliente
+          %th
+            Fecha de emisión
+          %th
+      %tbody
+        - @buys.each do |buy|
+          %tr
+            %td
+              = buy.member.user.username.capitalize unless buy.member.nil?
+            %td
+              = buy.customer.full_name unless buy.customer.nil?
+            %td
+              = buy.created_at.strftime('%d/%m/%Y')
+            %td
+              = link_to ' Ver Detalle de Compra', buy, class: 'btn btn-default fa fa-eye'
+- else
+  .empty.text-center
+    %h1
+      No hay compras realizadas.
+      %br
+      %br
+      %br
+      = link_to ' Volver a inicio', root_path, class: 'btn btn-lg btn-default'
+          

@@ -1,0 +1,23 @@
+%h1.text-center Lista de Sucursales
+%hr
+%br
+.row
+  .col-md-4
+  .col-md-4
+    .option-button
+      = link_to 'Nuevo Sucursal', new_sucursal_path, class: 'btn btn-success'
+    %br
+    .states-index 
+      %table.table.table-striped
+        %thead
+        %tbody
+          - @sucursals.each do |sucursal|
+            %tr
+              %td
+                = sucursal.name
+              /  %td
+              /   = sucursal.factor
+              %td
+                = link_to ' Editar', edit_sucursal_path(sucursal), class: 'btn btn-default fa fa-edit'
+              / %td
+              /   = link_to ' Eliminar', sucursal, method: :delete, data: { confirm: "¿Estas seguro de desea elmiminar la sucursal? ", class: 'btn btn-danger fa fa-trash'

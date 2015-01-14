@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @buy_detail.model_id %>
+</p>
+
+<p>
+  <strong>Buy:</strong>
+  <%= @buy_detail.buy_id %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @buy_detail.state_id %>
+</p>
+
+<p>
+  <strong>Imei:</strong>
+  <%= @buy_detail.imei %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @buy_detail.price %>
+</p>
+
+<%= link_to 'Edit', edit_buy_detail_path(@buy_detail) %> |
+<%= link_to 'Back', buy_details_path %>

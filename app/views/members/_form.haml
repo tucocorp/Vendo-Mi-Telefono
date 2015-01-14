@@ -1,0 +1,53 @@
+= form_for @user, url: members_path, html: { class: 'form-horizontal'} do |f|
+  .form-group.form-heading
+    .col-sm-12{style: 'margin-left: 10px;'}
+   
+
+  .form-group
+    .col-sm-6.name
+      = f.text_field :name, class: 'form-control', placeholder: 'Ingrese nombre Ej: Pedro'
+      .error-name.hidden.text-danger
+        debe Ingresar el nombre, Ej: Pedro.
+
+  .form-group
+    .col-sm-6.last_name
+      = f.text_field :last_name, class: 'form-control', placeholder: 'Ingrese apellido Ej: Carrasco'
+      .error-last_name.hidden.text-danger
+        Debe Ingresar los apellidos, Ej: Carrasco.
+              
+  .form-group
+    .col-sm-6.rut
+      =f.text_field :rut, class: 'form-control', placeholder: 'Ingrese rut Ej: 15789345-5' 
+      .error-rut-invalid.hidden.text-danger
+        Debe Ingresar Rut valido, Ej: 15789345-5.
+      .error-rut-formato.hidden.text-danger
+        Debe Ingresar Rut con un Formato correcto Ej: 15789345-5.
+  
+  .form-group
+    .col-sm-6.email
+      = f.email_field :email, class: 'form-control', placeholder: 'Ingrese email Ejemplo@ejemplo.com'
+      .error-email.hidden.text-danger
+        debe Ingresar email correcto Ej: ejemplo@ejemplo.com.
+  
+  .form-group
+    .col-sm-6.address
+      = f.text_field :address, class: 'form-control', placeholder: 'Ingrese Direccion Ej: Av. Providencia #123'
+      .error-address.hidden.text-danger
+        Debe Ingresar Dirección, Ej: Av. Providencia #123.    
+
+  .form-group
+    .col-sm-6.phone
+      = f.text_field :contact_number, class: 'form-control', placeholder: 'Ingrese numero teléfonico Ej: 94532144'
+      = hidden_field_tag :sucursal_id, @sucursal.id 
+      .error-phone-empty.hidden.text-danger
+        Debe Ingrese Teléfono de contacto.
+      .error-phone-isNaN.hidden.text-danger
+        Debe Ingresar Numero Ejemplo: 23456789
+      .error-phone-length.hidden.text-danger
+        Debe tener un minimo de 8 caracteres el Teléfono.
+
+  .form-group
+    .col-sm-6{style: 'margin-left: 10px;'}
+      = f.submit 'Guardar', class: 'btn btn-success', id: "buton-member"
+      = link_to 'Cancelar', sucursal_path(@sucursal.id) , class: 'btn btn-default'
+

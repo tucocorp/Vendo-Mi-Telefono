@@ -1,0 +1,10 @@
+= form_for @trademark, html: { class: 'form-horizontal', role: 'form'}  do |f| 
+  .form-group
+    .col-sm-10
+      = f.text_field :name , class: 'form-control trademark_name' ,placeholder: 'Ingrese un nombre de marca de teléfono'
+  .error-name.hidden.text-danger{style: 'margin-top:-15px;margin-bottom:15px;'}
+    Debe ingresar un nombre de marca de teléfono
+  
+  .actions
+    = f.submit "#{@option} Marca", class: 'btn btn-success', id: "buton-marca"
+    = link_to ' Cancelar', trademarks_path, class: 'btn btn-default'

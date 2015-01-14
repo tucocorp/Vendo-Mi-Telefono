@@ -1,0 +1,45 @@
+%h1
+  .title.text-center
+    Sucursal
+    = @sucursal.name.capitalize
+%hr
+%br
+.row
+  .col-sm-12
+    .col-sm-2
+    - unless @members.empty?
+      .index-sucursals.col-sm-8
+        .option-button
+          = link_to ' Agregar Miembro', new_member_path(sucursal_id: @sucursal.id), class: 'btn btn btn-success ' 
+          = link_to ' Ver Sucursales', company_path(@sucursal.company_id), class: 'btn btn btn-default'
+        %br
+        .membre-index
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Rut
+              %th Nombre
+              %th Email
+              %th Dirección
+          %tbody
+            - @members.each do |member|
+              %tr
+                %td
+                  = member.user.rut
+                %td
+                  = member.user.full_name
+                %td
+                  = member.user.email
+                %td
+                  = member.user.address
+                
+              
+
+    -else
+      .empty-models.text-center
+        %h4
+          No existen Miembro para la sucursal.
+          = "#{@sucursal.name}"
+        %br
+        = link_to ' Agregar Miembro', new_user_path(sucursal_id: @sucursal.id), class: 'btn btn-lg btn-success ' 
+        = link_to ' Ver Sucursales', company_path(@sucursal.company_id), class: 'btn btn-lg btn-default'

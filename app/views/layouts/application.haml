@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %title Vendo Mi Telefono Empresas
+    %meta{'charset' => "UTF-8"}
+    %meta{ name: 'viewport', content: 'initial-scale=1, maximum-scale=1' }
+    %link{rel: "", href: asset_path('vmt-favicon.png')}
+    = yield(:head)
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body{ class: user_signed_in? ? '' : 'login-home' }
+    - if user_signed_in?
+      = render 'shared/main_nav'
+
+      %section.content-wrapper
+        .sub-header
+          %h4.pull-left= yield(:sub_header)
+          .pull-right= yield(:sub_header_opts)
+          .clearfix
+      .main-wrapper{style: 'min-height:500px'}
+        = yield
+      
+      
+
+      %hr
+      %footer.col-md-12{style: 'padding: 2em 0;'}
+        %p.text-center 2014 Vendo Mi Teléfono Empresas.
+      
+
+    - else
+      %nav.navbar.navigation-navbar
+        .navbar-header.text-center
+          %a.logo{href: root_path}
+            %img{src: asset_url('logo.png'), alt: '', width: 200}
+
+      .main-wrapper.text-center
+        = yield
+        
+      %hr
+      %footer.col-md-12
+        %p.text-center 2014 Vendo Mi Teléfono Empresas.

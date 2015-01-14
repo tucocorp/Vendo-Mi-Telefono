@@ -1,0 +1,56 @@
+%h1
+  .title.text-center
+    Compañia
+    = @company.name.capitalize
+%hr
+%br
+.row
+  .col-sm-12
+    .col-sm-1
+    - if !@sucursals.empty?
+      .index-sucursals.col-sm-10
+        .option-button
+          = link_to ' Agregar Sucursal', new_sucursal_path(company_id: @sucursals.first.company_id), class: 'btn btn-success'
+          = link_to ' Ver Compañia', companies_path, class: 'btn btn-default'
+        %br
+        .sucursals-index
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Nombre
+              %th Dirección
+              %th Nombre contacto
+              %th Numero contacto
+              %th Email de sucursal 
+              %th{:colspan => 2}
+          %tbody
+            - @sucursals.each do |sucursals|
+              %tr
+                %td
+                  %strong
+                    = sucursals.name
+                %td
+                  = "#{sucursals.address}"
+                %td
+                  = sucursals.responsible_name
+                %td
+                  = sucursals.contact_number
+                %td
+                  = sucursals.email  
+                %td
+                  = link_to " Ver sucursal", sucursals, class: 'btn btn-default fa fa-eye'
+                  = link_to " Editar", edit_sucursal_path(sucursals), class: 'btn btn-default fa fa-edit'
+                  = link_to " Eliminar", sucursals, method: :delete, data: { confirm: "¿Estás Seguro que deseas eliminar el modelo #{sucursals.name}?"}, class: 'btn btn-danger fa fa-trash'
+    - else
+      .empty-models.text-center
+        %h4
+          No existen Sucursales para la Compañia.
+          = "#{@company.name}"
+        %br
+        = link_to ' Agregar Sucursales', new_sucursal_path(company_id: @company.id), class: 'btn btn-lg btn-success ' 
+        = link_to ' Ver Compañias', companies_path, class: 'btn btn-lg btn-default'
+
+
+      
+
+

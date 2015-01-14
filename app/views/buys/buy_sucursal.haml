@@ -1,0 +1,39 @@
+%h1.text-center lista de compras de teléfono por sucursal
+%hr
+%br
+  .col-md-10.col-md-offset-1
+    = form_tag buy_sucursal_path, method: :get  do 
+      .form-group
+        = search_field_tag :q, params[:q], placeholder: 'Ingrese Sucrsal'
+        = submit_tag "Buscar"
+  .col-md-10.col-md-offset-1
+    %table.table.table-striped
+      %thead
+        %tr
+          %th
+            marca
+          %th
+            modelo
+          %th
+            estado
+          %th
+            precio
+          %th
+            Fecha de emisión
+      %tbody
+        - @buys.each do |buy|
+          - buy.buy_details.each do |detail|
+            %tr
+              %td
+                = detail.model.trademark.name
+              %td
+                = detail.model.name
+              %td
+                = detail.state.name
+              %td
+                = detail.price
+              %td
+                = detail.buy.created_at.strftime('%d/%m/%Y')
+    = paginate @buys
+    %br
+    = link_to "Exportar a excel", buy_sucursal_path(format: "xls", q: params[:q]), class: 'btn btn-info'

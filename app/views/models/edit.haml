@@ -1,0 +1,13 @@
+%h1.text-center 
+  Nuevo Modelo Teléfonico
+  = "#{@model.trademark.name}"
+%hr
+%br
+.row
+  .col-sm-12
+    .col-sm-3
+    .form-body.col-sm-4{ style: 'margin-left:50px;' }
+      = render 'form'
+  .col-sm-12
+    .col-sm-4.col-md-offset-4
+      %hr

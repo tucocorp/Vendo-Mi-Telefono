@@ -1,0 +1,47 @@
+= form_for @customer, html: { class: 'form-inline', role: 'form'} do |f|
+  = if @customer.errors.any? 
+    #error_explanation
+      %h2
+        = pluralize(@customer.errors.count, "error")
+        prohibited this customer from being saved:
+
+      %ul
+        = @customer.errors.full_messages.each do |message|
+          %li
+            = message
+  
+  .form-group{style: 'margin-bottom:10px;'}
+    = f.label "Nombre" , class: 'control-label col-sm-3'
+    .col-sm-3
+      = f.text_field :name, class: 'form-control'
+
+  .form-group{style: 'margin-bottom:10px;'}
+    = f.label "Apellidos" , class: 'control-label col-sm-3'
+    .col-sm-3
+      = f.text_field :last_name, class: 'form-control'
+
+  .form-group{style: 'margin-bottom:10px;'}
+    = f.label "Rut", class: 'control-label col-sm-3'
+    .col-sm-3
+      = f.text_field :rut, class: 'form-control'
+
+  .form-group{style: 'margin-bottom:10px;'}
+    = f.label "Email", class: 'control-label col-sm-3'
+    .col-sm-3
+      = f.text_field :email, class: 'form-control'
+
+  .form-group{style: 'margin-bottom:10px;'}
+    = f.label "Dirección", class: 'control-label col-sm-3'
+    .col-sm-3
+      = f.text_field :address, class: 'form-control'
+
+  .form-group{style: 'margin-bottom:10px;'}
+    = f.label "Telefono", class: 'control-label col-sm-3'
+    .col-sm-3
+      = f.text_field :phone, class: 'form-control'
+
+  .actions{style: 'margin-bottom:10px;'}
+    = f.submit "#{@option} Usuario", class: 'btn btn-success'
+    = link_to 'Cancelar', customers_path, class: 'btn btn-default fa fa-close' 
+
+

@@ -1,0 +1,49 @@
+%h1.text-center
+  Ingrese Datos Del Cliente
+%hr
+%br
+.row
+  .col-sm-12
+    .col-sm-3
+    .form-body.col-sm-4{ style: 'margin-left:150px;' }
+
+      = form_for @customer, url: {action: "create_customer"}, html: { class: 'form-inline', role: 'form'}  do |f|
+
+        .form-group{style: 'margin-bottom:10px;'}
+          = f.label "Rut", class: 'control-label col-sm-3'
+          .col-sm-3
+            = f.text_field :rut, class: 'form-control'
+
+        .form-group{style: 'margin-bottom:10px;'}
+          = f.label "Nombres", class: 'control-label col-sm-3'
+          .col-sm-3
+            = f.text_field :name, class: 'form-control'
+
+        .form-group{style: 'margin-bottom:10px;'}
+          = f.label "Apellodos", class: 'control-label col-sm-3'
+          .col-sm-3
+            = f.text_field :last_name, class: 'form-control'
+
+        .form-group{style: 'margin-bottom:10px;'}
+          = f.label "Email", class: 'control-label col-sm-3'
+          .col-sm-3
+            = f.text_field :email, class: 'form-control'
+
+        .form-group{style: 'margin-bottom:10px;'}
+          = f.label "Dirección", class: 'control-label col-sm-3'
+          .col-sm-3
+            = f.text_field :address, class: 'form-control'
+
+        .form-group{style: 'margin-bottom:10px;'}
+          = f.label "Telefono", class: 'control-label col-sm-3'
+          .col-sm-3
+            = f.text_field :phone, class: 'form-control'
+        .form-group{style: 'margin-bottom:30px;'}
+          .option-button.text-center
+            = f.submit "Ingrese Datos", class: 'btn btn-success'
+            = hidden_field_tag :buy_id, params[:buy_id]
+      
+  .col-sm-12
+    .col-sm-4.col-md-offset-4
+      %hr  
+  

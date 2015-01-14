@@ -1,0 +1,21 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form' }) do |f|
+  %h3 Iniciar sesión
+  %hr
+  - unless alert.blank?
+    %p.alert.alert-danger= alert
+
+  .form-group
+    = f.text_field :email, class: 'form-control', placeholder: 'Correo Electrónico', autofocus: true, autocomplete: 'off'
+
+  .form-group
+    = f.password_field :password, class: 'form-control', placeholder: 'Contraseña', autocomplete: 'off'
+  
+  .form-group.text-left
+    %label.checkbox-inline
+      = f.check_box :remember_me
+      %span Recordarme
+
+  .form-group
+    = f.submit "Ingresar", class: 'btn btn-success btn-block'
+
+  = link_to 'Olvidé mi contraseña', new_user_password_path, style: 'color:#2d9b36;'

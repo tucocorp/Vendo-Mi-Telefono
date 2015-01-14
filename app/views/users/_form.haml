@@ -1,0 +1,45 @@
+.col-sm-12
+  = form_for @user, html: { class: 'form-horizontal'} do |f|
+    .form-group.form-heading
+      .col-sm-12{style: 'margin-left: 323px;'}
+        %h4 Información general
+
+
+    .form-group
+      = f.label "Nombre", class: 'control-label col-sm-3'
+      .col-sm-6
+        = f.text_field :username, class: 'form-control', placeholder: 'Ejemplo: Juan'
+    .form-group
+      = f.label "Rut", class: 'control-label col-sm-3'
+      .col-sm-6
+        =f.text_field :rut, class: 'form-control', placeholder: 'Ejemplo: 15789345-5'    
+   
+    .form-group
+      = f.label :email, class: 'control-label col-sm-3'
+      .col-sm-6
+        = f.email_field :email, class: 'form-control', placeholder: 'Ejemplo@ejemplo.com'
+
+    
+    .form-group
+      = f.label "Dirección", class: 'control-label col-sm-3'
+      .col-sm-6
+        = f.text_field :address, class: 'form-control', placeholder: 'Ejemplo: Direccion #1234'
+        
+    .form-group
+      = f.label "Teléfono de Contacto", class: 'control-label col-sm-3'
+      .col-sm-6
+        = f.text_field :contact_number, class: 'form-control', placeholder: 'Ejemplo: +569 94532144'
+
+    - if @user.new_record?
+      .form-group
+        = f.label 'Contraseña', class: 'control-label col-sm-3'
+        .col-sm-3
+          = f.password_field :password, class: 'form-control', placeholder: 'Contraseña'
+        .col-sm-3
+          = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirme su contraseña'
+
+    .form-group
+      .col-sm-6{style: 'margin-left: 321px;'}
+        = f.submit 'Guardar', class: 'btn btn-success'
+        = link_to 'Cancelar', sucursal_path(@sucursal_id) , class: 'btn btn-default'
+

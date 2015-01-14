@@ -1,0 +1,34 @@
+%h1.text-center lista de compras de teléfono 
+%hr
+%br
+  .col-md-10.col-md-offset-1
+    %table.table.table-striped
+      %thead
+        %tr
+          %th
+            marca
+          %th
+            modelo
+          %th
+            estado
+          %th
+            precio
+          %th
+            Fecha de emisión
+      %tbody
+        - @buys.each do |buy|
+          - buy.buy_details.each do |detail|
+            %tr
+              %td
+                = detail.model.trademark.name
+              %td
+                = detail.model.name
+              %td
+                = detail.state.name
+              %td
+                = detail.price
+              %td
+                = detail.buy.created_at.strftime('%d/%m/%Y')
+      
+    = link_to "Exportar a excel", buy_all_path(format: "xls"), class: 'btn btn-info'
+    = paginate @buys

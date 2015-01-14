@@ -1,0 +1,54 @@
+- unless @buy.coupon.nil?
+  .modal#show-coupon
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button{ type: "button", class: "close", 'data-dismiss' => "modal" } &times;
+          %h4.modal-title.text-center 
+            Fecha de generación de cupón:
+            = @buy.coupon.created_at.strftime('%d/%m/%Y') 
+        .modal-body{style: 'margin-bottom: 20px;'}
+          .form-group
+            .row
+              .col-md-1
+              .col-md-10
+                %br
+                .show-group-index
+                  %table.table.table-striped
+                    %tbody
+                      %tr
+                        %td
+                          Fecha de vencimiento:
+                        %td
+                          = @buy.coupon.end_date.strftime('%d/%m/%Y') 
+                          %br
+                          = @buy.coupon.end_date.strftime('%H:%m') 
+                          hrs
+                      %tr
+                        %td
+                          Cliente:
+                        %td
+                          = @buy.customer.rut
+                          %br
+                          = @buy.customer.full_name
+                      %tr
+                        %td
+                          Sucursal:
+                        %td
+                          = @buy.member.sucursal.name
+
+                      %tr
+                        %td
+                          Valor Cupón:
+                        %td
+                          = number_to_currency(@buy.coupon.price, precision: 0, separator: ",", delimiter: ".") 
+                  .barcode{style: 'margin-left:90px;'}       
+                    = raw @barcode_for_html.to_html
+                    %br
+                    = @buy.coupon.barcode_read
+
+        .modal-footer
+          .pull-right
+            = link_to 'Imprimir cupón', print_coupon_buy_path(@buy), method: :post ,class: 'btn btn-primary', data: { dismiss: 'modal' } 
+            = link_to 'Cancelar', '#', class: 'btn btn-link', data: { dismiss: 'modal' }
+            

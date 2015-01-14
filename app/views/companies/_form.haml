@@ -1,0 +1,18 @@
+= form_for @company, html: { class: 'form-horizontal', role: 'form'}  do |f| 
+  .form-group.name_field
+    = f.text_field :name , class: 'form-control company_name' ,placeholder: 'Ingrese una nombre'
+    .company_name-empty.hidden.text-danger
+      Debe ingresar un nombre
+  .form-group.phone_field
+    = f.text_field :contact_phone , class: 'form-control company_phone' ,placeholder: 'Ingrese una Teléfono'
+    .company_phone-empty.hidden.text-danger
+      Debe ingresar un teléfono de contacto
+    .company_phone-enough.hidden.text-danger
+      Debe ingresar 8 digitos, Ej: 68399419
+  .form-group
+    = f.text_area :description , class: 'form-control company_description' ,placeholder: 'Ingrese una descripción'
+    .company_description-empty.hidden.text-danger
+      Debe ingresar una descripción
+  .form-group
+    = f.submit "#{@option} compañia", class: 'btn btn-success', id: "buton-company"
+    = link_to ' Cancelar', companies_path, class: 'btn btn-default' 

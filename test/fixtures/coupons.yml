@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  end_date: 2014-11-06 11:44:34
+  barcode: MyString
+  user_id: 1
+  customer_id: 1
+  price: 1
+  buy_id: 1
+  state: 1
+
+two:
+  end_date: 2014-11-06 11:44:34
+  barcode: MyString
+  user_id: 1
+  customer_id: 1
+  price: 1
+  buy_id: 1
+  state: 1
